@@ -1,0 +1,19 @@
+[{
+	"name": "yoshi",
+	"belt": "green",
+	"rate": 50,
+	"available": true,
+	"thumb": "../content/images/yoshi.png"
+}, {
+	"name": "crystal",
+	"belt": "yellow",
+	"rate": 30,
+	"available": true,
+	"thumb": "../content/images/mario.png"
+}, {
+	"name": "ryu",
+	"belt": "black",
+	"rate": 10,
+	"available": true,
+	"thumb": "../content/images/ryu.png"
+}]
