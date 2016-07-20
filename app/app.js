@@ -1,11 +1,11 @@
-var myNinjaApp = angular.module('myNinjaApp', ['ngRoute', 'ngAnimate']);
+var scheduleApp = angular.module('scheduleApp', ['ngRoute', 'ngAnimate']);
 
-myNinjaApp.config(['$routeProvider', function($routeProvider){
+scheduleApp.config(['$routeProvider', function($routeProvider){
 
 	$routeProvider
 		.when('/home', {
 			templateUrl: 'views/home.html',
-			controller: 'NinjaController'
+			controller: 'scheduleController'
 		})
 		.when('/contact', {
 			templateUrl: 'views/contact.html',
@@ -15,16 +15,16 @@ myNinjaApp.config(['$routeProvider', function($routeProvider){
 			templateUrl: 'views/contact-success.html',
 			controller: 'ContactController'
 		})
-		.when('/directory', {
-			templateUrl: 'views/directory.html',
-			controller: 'NinjaController'
+		.when('/available', {
+			templateUrl: 'views/available.html',
+			controller: 'ScheduleController'
 		}).otherwise({
 			redirectTo: '/home'
 		});
 
 }]);
 
-myNinjaApp.directive('randomNinja', [function(){
+scheduleApp.directive('randomNinja', [function(){
 
 	return {
 		restrict: 'E',
@@ -43,44 +43,52 @@ myNinjaApp.directive('randomNinja', [function(){
 
 }]);
 
-myNinjaApp.controller('NinjaController', ['$scope', '$http', function($scope, $http){
+scheduleApp.controller('ScheduleController', ['$scope', '$http', function($scope, $http){
 
-	$scope.removeNinja = function(ninja){
-		var removeNinja = $scope.ninjas.indexOf(ninja);
-		$scope.ninjas.splice(removeNinja, 1);
+	$scope.removeShift = function(shift){
+		var removeShift = $scope.shifts.indexOf(shift);
+		//$scope.shifts.splice(removeShift, 1);
+		//$scope.shifts[removeShift].available = false;
+		shift.available = false;
+		console.log($scope.shifts[removeShift]);
 	};
 
-	$scope.addNinja = function() {
-		$scope.ninjas.push({
-			name: $scope.newninja.name,
-			belt: $scope.newninja.belt,
-			rate: parseInt($scope.newninja.rate),
+	$scope.addShift = function() {
+		$scope.shifts.push({
+			name: $scope.newshift.name,
+			date: $scope.newshift.date,
+			rate: parseInt($scope.newshift.rate),
 			available: true
 		});
 
-		$scope.newninja.name = '';
-		$scope.newninja.belt = '';
-		$scope.newninja.rate = '';
+		$scope.newshift.name = '';
+		$scope.newshift.date = '';
+		$scope.newshift.rate = '';
 
 	};
 
 	$scope.removeAll = function(){
-		$scope.ninjas = [];
+		
+		for(var i = 0; i < $scope.shifts.length; i++){
+		$scope.shifts[i].available = false;
+		}
+
+		//$scope.shifts = [];
 
 	};
 
 
 
 	$http.get('data/ninjas.json').success(function(data){
-		$scope.ninjas = data;
+		$scope.shifts = data;
 	});
 
 }]);
 
-myNinjaApp.controller("ContactController", ['$scope', '$location', function($scope, $location){
+/*scheduleApp.controller("ContactController", ['$scope', '$location', function($scope, $location){
 
 	$scope.sendMessage = function(){
 		$location.path('/contact-success');
 	}
 
-}]);
+}]);*/

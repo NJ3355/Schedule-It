@@ -1,19 +1,19 @@
 [{
-	"name": "yoshi",
-	"belt": "green",
+	"name": "nick",
+	"date": "Tuesday 1pm - CLOSE",
 	"rate": 50,
 	"available": true,
-	"thumb": "../content/images/yoshi.png"
+	"thumb": "../content/images/yoshii.png"
 }, {
-	"name": "crystal",
-	"belt": "yellow",
+	"name": "joe",
+	"date": "Monday 5pm-10pm",
 	"rate": 30,
 	"available": true,
-	"thumb": "../content/images/mario.png"
+	"thumb": "../content/images/marioi.png"
 }, {
-	"name": "ryu",
-	"belt": "black",
+	"name": "sam",
+	"date": "Sunday 8AM-4PM",
 	"rate": 10,
 	"available": true,
-	"thumb": "../content/images/ryu.png"
+	"thumb": "../content/images/ryui.png"
 }]
