@@ -30,7 +30,31 @@ h1,h2,h3{
   
 }
 
+#logo {
+  
+  display: block;
+   margin: 0 auto;
+   margin-top: 2em;
+   padding-bottom: 2em;
+}
 
+#info {
+  text-align: center;
+  margin: auto;
+  width:65%;
+}
+
+
+#info p {
+  line-height: 2em;
+}
+
+
+#click {
+  text-align: center;
+  margin-top:3em;
+  color:blue;
+}
 
 
 
