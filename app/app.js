@@ -18,7 +18,12 @@ scheduleApp.config(['$routeProvider', function($routeProvider){
 		.when('/available', {
 			templateUrl: 'views/available.html',
 			controller: 'ScheduleController'
-		}).otherwise({
+		})
+		.when('/myshifts', {
+			templateUrl: 'views/myshifts.html',
+			controller: 'ScheduleController'
+		})
+		.otherwise({
 			redirectTo: '/home'
 		});
 
@@ -44,6 +49,62 @@ scheduleApp.directive('randomNinja', [function(){
 }]);
 
 scheduleApp.controller('ScheduleController', ['$scope', '$http', function($scope, $http){
+		
+		$scope.myShifts = [];
+
+		$http.get('data/ninjas.json').success(function(data){
+			$scope.shifts = data;
+
+			
+		});
+
+
+		$scope.test = 'hi';
+
+	//Available shifts main functions
+
+	$scope.removeShift = function(shift){
+		var removeShift = $scope.shifts.indexOf(shift);
+		
+		shift.available = false;
+		$scope.myShifts.push(shift);
+		$scope.test = "bye";
+		
+	};
+
+	$scope.addShift = function() {
+		$scope.shifts.push({
+			name: $scope.newshift.name,
+			date: $scope.newshift.date,
+			rate: parseInt($scope.newshift.rate),
+			available: true
+		});
+
+		$scope.newshift.name = '';
+		$scope.newshift.date = '';
+		$scope.newshift.rate = '';
+
+	};
+
+	$scope.removeAll = function(){
+		
+		for(var i = 0; i < $scope.shifts.length; i++){
+		$scope.shifts[i].available = false;
+		}
+
+		//$scope.shifts = [];
+
+	};
+
+	//My shifts functions
+
+
+
+
+}]);
+
+
+/*scheduleApp.controller('myShiftsController', ['$scope',  function($scope){
 
 	$scope.removeShift = function(shift){
 		var removeShift = $scope.shifts.indexOf(shift);
@@ -79,11 +140,11 @@ scheduleApp.controller('ScheduleController', ['$scope', '$http', function($scope
 
 
 
-	$http.get('data/ninjas.json').success(function(data){
-		$scope.shifts = data;
-	});
+	$scope.myShifts = [];
 
-}]);
+	
+
+}]);*/
 
 /*scheduleApp.controller("ContactController", ['$scope', '$location', function($scope, $location){
 

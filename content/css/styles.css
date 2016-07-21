@@ -7,11 +7,45 @@ h1,h2,h3{
   margin: 0;
 }
 
+
+
+
+#details {
+  display: inline;
+  float: left;
+}
+
+#times {
+  display: inline;
+  float: right;
+}
+
+#order {
+  float:left;
+}
+
+
+
+#sidebar {
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
 .belt{
   padding: 5px 10px;
   border-radius: 10px;
   margin-left: 5px;
-  color: #fff;
+  color: black;
   font-size: 15px;
 
   text-transform: uppercase;

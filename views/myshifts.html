@@ -1,0 +1,26 @@
+
+  <div class="content">
+    <h1 style="text-align: center">My Shifts</h1>
+      <button id="order" ng-click="order = 'name'">Order by Name</button>
+      <input type="text" ng-model="search" placeholder="Search a shift" />
+      <div id="titles">
+        <span id="details">Shift Details</span><span id="times">Shift Times</span>
+      </div>
+      <ul id="ninja-list">
+        <li ng-repeat="myShift in myShifts | orderBy: order | filter: search" >
+          <img ng-src="{{myShift.thumb}}" style="margin:-12px 10px 0 0; width:50px" ng-show="myShift.thumb"/>
+          <h3>{{myShift.name}} - {{myShift.rate | currency}}/Hr</h3>
+          <div class="remove" ng-click="removeShift(myShift)">CLAIM</div>
+          <span class="belt">{{myShift.date}}</span>
+        </li>
+      </ul>
+      <form ng-submit="addShift()">
+        <input type="text" placeholder="name" ng-model="newshift.name"/>
+        <input type="text" placeholder="belt" ng-model="newshift.date"/>
+        <input type="text" placeholder="rate" ng-model="newshift.rate"/>
+        <input type="submit" value="Add" />
+      </form>
+    <a href="" ng-click="removeAll()">Remove All</a>
+  </div>
+
+

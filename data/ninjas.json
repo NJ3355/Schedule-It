@@ -1,17 +1,17 @@
 [{
-	"name": "nick",
+	"name": "Cleaner",
 	"date": "Tuesday 1pm - CLOSE",
 	"rate": 50,
 	"available": true,
 	"thumb": "../content/images/yoshii.png"
 }, {
-	"name": "joe",
+	"name": "Cashier",
 	"date": "Monday 5pm-10pm",
 	"rate": 30,
 	"available": true,
 	"thumb": "../content/images/marioi.png"
 }, {
-	"name": "sam",
+	"name": "Hostess",
 	"date": "Sunday 8AM-4PM",
 	"rate": 10,
 	"available": true,
