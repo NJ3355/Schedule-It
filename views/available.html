@@ -7,7 +7,7 @@
         <span id="details">Shift Details</span><span id="times">Shift Times</span>
       </div>
       <ul id="ninja-list">
-        <li ng-repeat="shift in shifts | orderBy: order | filter: search" ng-show="shift.available">
+        <li ng-repeat="shift in shifts | orderBy: order | filter: search" >
           <img ng-src="{{shift.thumb}}" style="margin:-12px 10px 0 0; width:50px" ng-show="shift.thumb"/>
           <h3>{{shift.name}} - {{shift.rate | currency}}/Hr</h3>
           <div class="remove" ng-click="removeShift(shift)">CLAIM</div>
@@ -20,8 +20,9 @@
         <input type="text" placeholder="rate" ng-model="newshift.rate"/>
         <input type="submit" value="Add" />
       </form>
-    <a href="" ng-click="removeAll()">Remove All</a>
+    <a href="" ng-click="removeAllAvailable()">Remove All</a>
   </div>
+
 
 
   <div id="sidebar" class="content" ng-show="myShifts.length > 0">
@@ -35,12 +36,12 @@
         <li ng-repeat="myShift in myShifts | orderBy: order | filter: search" >
           <img ng-src="{{myShift.thumb}}" style="margin:-12px 10px 0 0; width:50px" ng-show="myShift.thumb"/>
           <h3>{{myShift.name}} - {{myShift.rate | currency}}/Hr</h3>
-          <div class="remove" ng-click="removeShift(myShift)">CLAIM</div>
+          <div class="remove" ng-click="cancelShift(myShift)">Cancel</div>
           <span class="belt">{{myShift.date}}</span>
         </li>
       </ul>
  
-    <a href="" ng-click="removeAll()">Remove All</a>
+    <a href="" ng-click="removeAllMy()">Remove All</a>
   </div>
 
 

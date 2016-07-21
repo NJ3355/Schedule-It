@@ -59,7 +59,7 @@ scheduleApp.controller('ScheduleController', ['$scope', '$http', function($scope
 		});
 
 
-		$scope.test = 'hi';
+		
 
 	//Available shifts main functions
 
@@ -68,7 +68,8 @@ scheduleApp.controller('ScheduleController', ['$scope', '$http', function($scope
 		
 		shift.available = false;
 		$scope.myShifts.push(shift);
-		$scope.test = "bye";
+		$scope.shifts.splice(removeShift, 1);
+
 		
 	};
 
@@ -84,19 +85,64 @@ scheduleApp.controller('ScheduleController', ['$scope', '$http', function($scope
 		$scope.newshift.date = '';
 		$scope.newshift.rate = '';
 
+
 	};
 
-	$scope.removeAll = function(){
+	$scope.removeAllAvailable = function(){
+		$scope.shifts = [];
+		/*for(var i = allShifts.length - 1; i >= 0; i--){
+			
+			allShifts.pop();
 		
-		for(var i = 0; i < $scope.shifts.length; i++){
-		$scope.shifts[i].available = false;
-		}
+		
+		}*/
 
-		//$scope.shifts = [];
 
 	};
 
 	//My shifts functions
+
+	$scope.cancelShift = function(shift){
+		var removeShift = $scope.myShifts.indexOf(shift);
+
+		shift.available = true;
+		$scope.shifts.push(shift);
+		$scope.myShifts.splice(removeShift, 1);
+		console.log($scope.myShifts);
+
+
+	}
+
+
+	$scope.removeAllMy = function(){
+		
+		//console.log($scope.myShifts);
+		/*for(var i = 0; i < $scope.myShifts.length; i++){
+			//console.log($scope.myShifts[i]);
+			$scope.shifts.push($scope.myShifts[i]);
+			
+		}*/
+
+		var temp = $scope.myShifts.concat($scope.shifts);
+
+		$scope.shifts = temp;
+		
+		//$scope.shifts.push($scope.myShifts[0]);
+		$scope.myShifts = [];
+		
+console.log($scope.shifts);
+console.log($scope.myShifts);
+	
+		
+		/*for(var i = allShifts.length - 1; i >= 0; i--){
+			
+			allShifts.pop();
+		
+		
+		}*/
+
+
+	};
 
 
 
